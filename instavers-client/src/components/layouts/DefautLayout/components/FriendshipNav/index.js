@@ -1,4 +1,4 @@
-import { faTimes, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faUsers } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cls from 'classnames'
 import { useEffect, useState } from 'react'
@@ -92,7 +92,7 @@ function FriendshipNav() {
             )}
             <FontAwesomeIcon
                 className={cls('cursor-pointer', { 'text-blue-500': isActive })}
-                icon={faUserGroup}
+                icon={faUsers}
                 onClick={handleGotoFriend}
             />
 
