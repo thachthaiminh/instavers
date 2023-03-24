@@ -105,7 +105,7 @@ function FilterProcess(props) {
         const lists = []
         let newCaption = caption
 
-        const uri = signalChar==="@" ? '/profile/' : '/hashtags/'
+        const uri = signalChar === '@' ? '/profile/' : '/hashtags/'
 
         array.forEach((tag) => {
             const value = tag.user_name || tag.hashtag_name
@@ -116,7 +116,7 @@ function FilterProcess(props) {
                         signalChar === '@' ? 'text-blue-500' : ''
                     }" data-link='${uri}${value}'>${signalChar}${value} </span>`
                 )
-                lists.push(tag.user_id||tag.hashtag_id)
+                lists.push(tag.user_id || tag.hashtag_id)
             }
         })
         return [lists, newCaption]
@@ -141,20 +141,20 @@ function FilterProcess(props) {
 
                 {currentModal === FILTER_MODAL && (
                     <>
-                        <span>Image Filters</span>
+                        <span>Chọn Filters</span>
                         <button
                             className="text-blue-600"
                             onClick={() => setCurrentModal(CAPTION_MODAL)}
                         >
-                            Next
+                            Tiếp
                         </button>
                     </>
                 )}
                 {currentModal === CAPTION_MODAL && (
                     <>
-                        <span>Create new post</span>
+                        <span>Tạo post mới</span>
                         <button className="text-blue-600" onClick={handleFinalUpload}>
-                            Share
+                            Đăng ngay
                         </button>
                     </>
                 )}
@@ -163,7 +163,7 @@ function FilterProcess(props) {
             <div className="flex">
                 {/* Image Preview*/}
                 <div className="w-[350px] relative">
-                    <div className="flex-grow  flex flex-col justify-center h-full  text-lg overflow-hidden">
+                    <div className="flex flex-col justify-center flex-grow h-full overflow-hidden text-lg">
                         <div
                             className={cls('flex w-[10000px] ease-in duration-300')}
                             style={{ marginLeft: marginleft }}
@@ -190,7 +190,7 @@ function FilterProcess(props) {
 
                     <div
                         onClick={handlePrevImage}
-                        className="absolute p-2 top-1/2 text-3xl -translate-y-1/2 hover:text-blue-500 cursor-pointer"
+                        className="absolute p-2 text-3xl -translate-y-1/2 cursor-pointer top-1/2 hover:text-blue-500"
                     >
                         <FontAwesomeIcon
                             className={cls({ hidden: isFirstList })}
@@ -199,7 +199,7 @@ function FilterProcess(props) {
                     </div>
                     <div
                         onClick={handleNextImage}
-                        className="absolute p-2 top-1/2 right-0 text-3xl -translate-y-1/2 hover:text-blue-500 cursor-pointer"
+                        className="absolute right-0 p-2 text-3xl -translate-y-1/2 cursor-pointer top-1/2 hover:text-blue-500"
                     >
                         <FontAwesomeIcon
                             className={cls({ hidden: isLastList })}

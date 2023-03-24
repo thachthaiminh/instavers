@@ -30,8 +30,6 @@ function UploadImage({ handleUploadImage }) {
         handleUploadImage(imgSrcList)
     }
 
-    
-
     return (
         <div
             className="w-80 h-[300px] md:w-[430px] md:h-[550px] flex flex-col text-center"
@@ -40,23 +38,23 @@ function UploadImage({ handleUploadImage }) {
             onDrop={handleDrop}
         >
             <div className="px-1 py-2 font-medium border-b-gray-300 border-b-[1px]">
-                Create new post
+                Tạo post mới
             </div>
 
             {/* Dragover */}
-            <div className="flex-grow flex flex-col justify-center items-center text-lg">
+            <div className="flex flex-col items-center justify-center flex-grow text-lg">
+                <label
+                    className="px-3 py-1 font-medium text-white bg-blue-500 rounded-lg cursor-pointer"
+                    htmlFor="image"
+                >
+                    Chọn ảnh từ máy tính!
+                </label>
+                <span className="inline-block my-5 text-xl font-light text-gray-600">
+                    Hoặc kéo ảnh vào đây nè!
+                </span>
                 <div className="text-5xl">
                     <FontAwesomeIcon icon={faImages} />
                 </div>
-                <span className="inline-block my-5 text-xl text-gray-600 font-light">
-                    Drag photos here
-                </span>
-                <label
-                    className="px-3 py-1 bg-blue-500 font-medium text-white rounded-lg cursor-pointer"
-                    htmlFor="image"
-                >
-                    Select from computer
-                </label>
             </div>
 
             {/* form upload */}

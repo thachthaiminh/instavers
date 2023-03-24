@@ -11,7 +11,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cls from 'classnames'
 import styles from './Comment.module.css'
-// import j1 from '../../assets/images/j_1.jpg'
 
 import { useDispatch, useSelector } from 'react-redux'
 import CommentInput from '../../components/CommentInput'
@@ -101,9 +100,9 @@ function Comment({ postInfo, closeComment, likeStatus, onUpdateLike, gotoId }) {
             <div className="flex bg-white z-50 w-full h-[540px] mx-5 md:mx-32 lg:mx-48 rounded-xl overflow-hidden">
                 <ImageSlider imageList={imageList} />
 
-                <div className="w-full sm:w-3/5 p-3 flex flex-col">
+                <div className="flex flex-col w-full p-3 sm:w-3/5">
                     {/* Header info */}
-                    <div className="h-14 flex items-center gap-3 font-medium border-b -mx-3 px-3 pb-3 flex-shrink-0">
+                    <div className="flex items-center flex-shrink-0 gap-3 px-3 pb-3 -mx-3 font-medium border-b h-14">
                         <div className="w-10 h-10 ">
                             <AvatarImage filename={avatar} />
                         </div>
@@ -111,7 +110,7 @@ function Comment({ postInfo, closeComment, likeStatus, onUpdateLike, gotoId }) {
                             <span className="font-bold leading-none text-md">
                                 @{postInfo.user_name}
                             </span>
-                            <span className="leading-normal text-gray-400 text-sm">
+                            <span className="text-sm leading-normal text-gray-400">
                                 {postInfo.user_fullname}
                             </span>
                         </div>
@@ -140,14 +139,14 @@ function Comment({ postInfo, closeComment, likeStatus, onUpdateLike, gotoId }) {
                             </div>
                         )}
                         {loading && (
-                            <div className="flex justify-center h-full items-center">
-                                <span className="block w-16 h-16 border-2 border-t-transparent animate-spin rounded-full"></span>
+                            <div className="flex items-center justify-center h-full">
+                                <span className="block w-16 h-16 border-2 rounded-full border-t-transparent animate-spin"></span>
                             </div>
                         )}
                     </div>
                     <div className="-mx-3">
-                        <div className="border-y  p-3">
-                            <div className="flex justify-between items-center text-2xl pb-1">
+                        <div className="p-3 border-y">
+                            <div className="flex items-center justify-between pb-1 text-2xl">
                                 <div className="flex gap-5">
                                     <LikeButton
                                         likeStatus={likeStatus}
@@ -169,7 +168,7 @@ function Comment({ postInfo, closeComment, likeStatus, onUpdateLike, gotoId }) {
                             </div>
                         </div>
                         {replyData && (
-                            <div className="px-3 text-violet-400 font-medium flex items-center">
+                            <div className="flex items-center px-3 font-medium text-violet-400">
                                 <span>
                                     Trả lời{' '}
                                     <span className="text-violet-600">
@@ -179,14 +178,14 @@ function Comment({ postInfo, closeComment, likeStatus, onUpdateLike, gotoId }) {
                                     </span>
                                 </span>
                                 <span
-                                    className="pl-1 cursor-pointer text-gray-700 "
+                                    className="pl-1 text-gray-700 cursor-pointer "
                                     onClick={() => setReplyData(null)}
                                 >
                                     <FontAwesomeIcon icon={faTimesCircle} />
                                 </span>
                             </div>
                         )}
-                        <div className="p-3 pb-0 flex justify-between items-center">
+                        <div className="flex items-center justify-between p-3 pb-0">
                             <CommentInput
                                 postId={postId}
                                 replyData={replyData}

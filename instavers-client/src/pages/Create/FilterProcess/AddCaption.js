@@ -149,13 +149,12 @@ function AddCaption({ captionRef, control }) {
                 <div className="flex items-center">
                     <div className="w-10 h-10">
                         <AvatarImage filename={user.avatar} />
-                        
                     </div>
                     <div className="flex flex-col justify-center px-2">
-                        <span className="font-bold leading-none text-md text-left">
+                        <span className="font-bold leading-none text-left text-md">
                             @{user.username}
                         </span>
-                        <span className="leading-normal text-gray-400 text-sm">
+                        <span className="text-sm leading-normal text-gray-400">
                             {user.fullname}
                         </span>
                     </div>
@@ -166,8 +165,8 @@ function AddCaption({ captionRef, control }) {
                     ref={captionRef}
                     onBlur={(e) => e.target.focus()}
                     onChange={handleOnChange}
-                    placeholder="Write a caption"
-                    className="w-full grow outline-none resize-none"
+                    placeholder="Viết một chút caption nha bạn!"
+                    className="w-full outline-none resize-none grow"
                     spellCheck={false}
                     autoFocus={true}
                     type="text"
@@ -189,7 +188,7 @@ function AddCaption({ captionRef, control }) {
                             {mentionList.map((user) => (
                                 <li
                                     key={user.user_id}
-                                    className="flex p-1 gap-1 cursor-pointer"
+                                    className="flex gap-1 p-1 cursor-pointer"
                                     onClick={() => handleAddMention(user)}
                                 >
                                     <div className="w-6 h-6">
@@ -208,7 +207,7 @@ function AddCaption({ captionRef, control }) {
                             {hashtagList.map((tag) => (
                                 <li
                                     key={tag.hashtag_id}
-                                    className="flex p-1 gap-1 cursor-pointer"
+                                    className="flex gap-1 p-1 cursor-pointer"
                                     onClick={() => handleAddHashtag(tag)}
                                 >
                                     <span>#{tag.hashtag_name}</span>
@@ -225,7 +224,7 @@ function AddCaption({ captionRef, control }) {
             <div className="flex justify-between p-3 ">
                 <div className="relative">
                     <FontAwesomeIcon className="peer" icon={faSmile} />
-                    <div className="peer-hover:block bg-white -mb-2  hidden hover:block  absolute w-24 bottom-full border border-gray-200 p-1 text-lg">
+                    <div className="absolute hidden w-24 p-1 -mb-2 text-lg bg-white border border-gray-200 peer-hover:block hover:block bottom-full">
                         {icons.map((icon) => (
                             <span key={icon} onClick={() => typeInTextarea(icon)}>
                                 {icon}

@@ -17,7 +17,15 @@ import { useRef, useState } from 'react'
 // import helper from '../../utils/helper'
 import ImageCrop from './ImageCrop'
 
-function CropProcess({ imageCropList, updateImage, openPreview, hidden, loadedImage, aspect,setAspect }) {
+function CropProcess({
+    imageCropList,
+    updateImage,
+    openPreview,
+    hidden,
+    loadedImage,
+    aspect,
+    setAspect,
+}) {
     const imgCropConatainer = useRef(null)
 
     const [currentImage, setCurrentImage] = useState(0)
@@ -112,7 +120,7 @@ function CropProcess({ imageCropList, updateImage, openPreview, hidden, loadedIm
         pixelCropList[currentImage] = newPixelCrop
         setPixelCropList([...pixelCropList])
     }
-    
+
     const changeTransY = (transY) => {
         const newCurrentImage = { ...imageCropList[currentImage], transY }
         updateImage(currentImage, newCurrentImage)
@@ -128,23 +136,33 @@ function CropProcess({ imageCropList, updateImage, openPreview, hidden, loadedIm
     const isFirstList = currentImage === 0
     const marginleft = `-${currentImage * 430}px`
     return (
-        <div className={cls(" w-[430px]  h-[550px] overflow-auto flex flex-col text-center relative", {hidden: hidden})}>
+        <div
+            className={cls(
+                ' w-[430px]  h-[550px] overflow-auto flex flex-col text-center relative',
+                { hidden: hidden }
+            )}
+        >
             <div className="flex-shrink-0 px-5 flex justify-between items-center py-2 font-medium border-b-gray-300 border-b-[1px]">
                 <FontAwesomeIcon icon={faArrowLeft} />
-                <span>Crop image</span>
-                <button className="text-blue-600" onClick={() => openPreview(pixelCropList, aspect)}>
+                <span>Cắt ảnh</span>
+                <button
+                    className="text-blue-600"
+                    onClick={() => openPreview(pixelCropList, aspect)}
+                >
                     {/* {loadedImage ?  */}
-                    Next
-                    
+                    Tiếp
                 </button>
             </div>
 
             {/* Crop */}
             <div
                 ref={imgCropConatainer}
-                className="flex-grow flex flex-col justify-center  text-lg overflow-hidden"
+                className="flex flex-col justify-center flex-grow overflow-hidden text-lg"
             >
-                <div className={cls('flex w-[10000px] ease-in duration-300')} style={{ marginLeft: marginleft }}>
+                <div
+                    className={cls('flex w-[10000px] ease-in duration-300')}
+                    style={{ marginLeft: marginleft }}
+                >
                     {imageCropList?.map((image, index) => (
                         <ImageCrop
                             key={image.src}
@@ -166,14 +184,14 @@ function CropProcess({ imageCropList, updateImage, openPreview, hidden, loadedIm
                     <div className="relative">
                         <FontAwesomeIcon
                             onClick={() => setOpenAspect(!openAspect)}
-                            className="mr-3 hover:text-blue-500 cursor-pointer"
+                            className="mr-3 cursor-pointer hover:text-blue-500"
                             icon={faExpand}
                         />
                         {openAspect && (
-                            <div className="absolute bottom-full mb-3 bg-black/60  rounded-lg text-base font-medium text-white">
+                            <div className="absolute mb-3 text-base font-medium text-white rounded-lg bottom-full bg-black/60">
                                 <ul>
                                     <li
-                                        className="p-2 flex items-center gap-2 hover:text-gray-300 cursor-pointer"
+                                        className="flex items-center gap-2 p-2 cursor-pointer hover:text-gray-300"
                                         onClick={() => setAspect(1)}
                                     >
                                         <span>1:1</span>
@@ -181,14 +199,14 @@ function CropProcess({ imageCropList, updateImage, openPreview, hidden, loadedIm
                                     </li>
                                     <div className=" w-full h-[1px] bg-slate-200"></div>
                                     <li
-                                        className="p-2 flex items-center gap-2 hover:text-gray-300 cursor-pointer"
+                                        className="flex items-center gap-2 p-2 cursor-pointer hover:text-gray-300"
                                         onClick={() => setAspect(16 / 9)}
                                     >
                                         <span>16:9</span>
                                         <FontAwesomeIcon icon={faRectangleTimes} />
                                     </li>
                                     <li
-                                        className="p-2 flex items-center gap-2 hover:text-gray-300 cursor-pointer"
+                                        className="flex items-center gap-2 p-2 cursor-pointer hover:text-gray-300"
                                         onClick={() => setAspect(4 / 5)}
                                     >
                                         <span>4:5</span>
@@ -200,29 +218,29 @@ function CropProcess({ imageCropList, updateImage, openPreview, hidden, loadedIm
                     </div>
                     <FontAwesomeIcon
                         onClick={zoomIn}
-                        className="mr-3 hover:text-blue-500 cursor-pointer"
+                        className="mr-3 cursor-pointer hover:text-blue-500"
                         icon={faMagnifyingGlassPlus}
                     />
                     <FontAwesomeIcon
                         onClick={zoomOut}
-                        className="mr-3 hover:text-blue-500 cursor-pointer"
+                        className="mr-3 cursor-pointer hover:text-blue-500"
                         icon={faMagnifyingGlassMinus}
                     />
                 </div>
                 <div className="flex items-center gap-2">
                     <FontAwesomeIcon
                         onClick={() => handleRotate(-10)}
-                        className="hover:text-blue-500 cursor-pointer"
+                        className="cursor-pointer hover:text-blue-500"
                         icon={faRotateLeft}
                     />
                     <FontAwesomeIcon
                         onClick={() => handleRotate(10)}
-                        className="hover:text-blue-500 cursor-pointer"
+                        className="cursor-pointer hover:text-blue-500"
                         icon={faRotateRight}
                     />
                     <FontAwesomeIcon
                         onClick={() => handleRotate(0, true)}
-                        className="hover:text-blue-500 cursor-pointer"
+                        className="cursor-pointer hover:text-blue-500"
                         icon={faXmarkCircle}
                     />
                 </div>
@@ -230,13 +248,13 @@ function CropProcess({ imageCropList, updateImage, openPreview, hidden, loadedIm
 
             <div
                 onClick={handlePrevImage}
-                className="absolute p-2 top-1/2 text-3xl -translate-y-1/2 hover:text-blue-500 cursor-pointer"
+                className="absolute p-2 text-3xl -translate-y-1/2 cursor-pointer top-1/2 hover:text-blue-500"
             >
                 <FontAwesomeIcon className={cls({ hidden: isFirstList })} icon={faChevronLeft} />
             </div>
             <div
                 onClick={handleNextImage}
-                className="absolute p-2 top-1/2 right-0 text-3xl -translate-y-1/2 hover:text-blue-500 cursor-pointer"
+                className="absolute right-0 p-2 text-3xl -translate-y-1/2 cursor-pointer top-1/2 hover:text-blue-500"
             >
                 <FontAwesomeIcon className={cls({ hidden: isLastList })} icon={faChevronRight} />
             </div>

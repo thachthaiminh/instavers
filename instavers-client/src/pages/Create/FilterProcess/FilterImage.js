@@ -11,12 +11,12 @@ const filters = [
     { name: 'Crema', filter: 'crema' },
     { name: 'Moon', filter: 'moon' },
 ]
-function FilterImage({imageFilterList, handleChangeFilter, currentImage}) {
+function FilterImage({ imageFilterList, handleChangeFilter, currentImage }) {
     return (
         <>
             <div className="flex font-medium">
-                <span className="w-1/2 inline-block py-2 border-b border-b-slate-600">Filters</span>
-                <span className="w-1/2 inline-block py-2 border-b border-b-slate-200">
+                <span className="inline-block w-1/2 py-2 border-b border-b-slate-600">Filters</span>
+                <span className="inline-block w-1/2 py-2 border-b border-b-slate-200">
                     Ajustment
                 </span>
             </div>
@@ -34,7 +34,7 @@ function FilterImage({imageFilterList, handleChangeFilter, currentImage}) {
                                         'border-[3px] border-blue-700':
                                             imageFilterList[currentImage] === filter.filter,
                                     })}
-                                    src="https://hinhanhdephd.com/wp-content/uploads/2015/12/hinh-anh-dep-girl-xinh-hinh-nen-dep-gai-xinh.jpg"
+                                    src="https://i.ytimg.com/vi/dz6xe0xXqYE/maxresdefault.jpg"
                                     alt="icon"
                                 />
                                 <span>{filter.name}</span>

@@ -48,7 +48,7 @@ function ItemDetail() {
         <div className="w-4/5 mx-auto md:w-1/2 lg:w-1/3 ">
             {!loading &&
                 (error ? (
-                    <div className="text-red-500">Khong tim thay bai post</div>
+                    <div className="text-red-500">Không tìm thấy bài post</div>
                 ) : (
                     <>
                         {post && (

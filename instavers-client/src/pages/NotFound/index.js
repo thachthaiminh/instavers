@@ -1,7 +1,5 @@
 function NotFound() {
-    return (<div>
-        Khong tim thay trang!
-    </div>);
+    return <div>Không tìm thấy trang rồi bạn ơi!</div>
 }
 
-export default NotFound;
+export default NotFound
