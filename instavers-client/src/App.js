@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { io } from 'socket.io-client'
 import { clearSocket, setSocket } from './app/slices/socketSlice'
 import { SOCKET_SERVER } from './utils/variables'
-import Chat from './Chat_User/Chat'
 
 function App() {
     const socket = useSelector((state) => state.socket.current)
@@ -86,17 +85,6 @@ function App() {
                         element={
                             <DefaultLayout>
                                 <AccountInfo />
-                            </DefaultLayout>
-                        }
-                    />
-                </Route>
-
-                <Route element={<PrivateAccountRoute />}>
-                    <Route
-                        path="/Chat"
-                        element={
-                            <DefaultLayout>
-                                <Chat />
                             </DefaultLayout>
                         }
                     />

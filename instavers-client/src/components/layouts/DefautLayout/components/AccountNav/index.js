@@ -1,4 +1,4 @@
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cls from 'classnames'
 import { useState } from 'react'
@@ -17,7 +17,11 @@ function AccountNav({ user }) {
     return (
         <div className="relative z-0">
             <span className="cursor-pointer peer">
-                <FontAwesomeIcon icon={faUser} onClick={() => setOpen(!open)} className="user" />
+                <FontAwesomeIcon
+                    icon={faUserCircle}
+                    onClick={() => setOpen(!open)}
+                    className="user"
+                />
             </span>
             <div
                 className={cls(

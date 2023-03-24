@@ -12,7 +12,7 @@ const icons = ['😀', '😂', '😅', '😆', '😈', '😍', '😎', '😛', '
 const HOST = process.env.REACT_APP_IMAGE_HOST
 function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
     const user = useSelector((state) => state.auth.user)
-    const socket = useSelector(state => state.socket.current)
+    const socket = useSelector((state) => state.socket.current)
 
     const [getMention, setGetMention] = useState(false)
     const [startPos, setStartPos] = useState(0)
@@ -196,13 +196,13 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
 
         if (replyData) data.replyId = replyData.comment_id
 
-        console.log("Comment data:",data)
+        console.log('Comment data:', data)
         try {
             setLoading(true)
             const res = await CommentService.add(data)
-            console.log("Comment res:",res)
+            console.log('Comment res:', res)
             const commentId = res.comment_id
-            updateCommentList(commentId,data,user)
+            updateCommentList(commentId, data, user)
             setLoading(false)
             showSuccessNotification()
         } catch (error) {
@@ -211,23 +211,29 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
         }
     }
 
-    const updateCommentList = (comment_id, data, user)=>{
+    const updateCommentList = (comment_id, data, user) => {
         const newComment = {
             comment_id,
             comment_content: data.captionData.content,
             user_name: user.username,
             user_id: user.id,
             user_avatar: user.avatar,
-            replies:[],
+            replies: [],
             reply_comment_id: data.replyId,
-            time_distance: "Vừa mới"
+            time_distance: 'Vừa mới',
         }
-        console.log("New comment:", newComment);
+        console.log('New comment:', newComment)
 
         //Notification
-        const dataEmit = { from:user.username, to:username, mentions: addedMetionList,postId: postId, commentData: newComment}
-        socket.emit("notification:comment", dataEmit)
-        if(onUpdateCommentList){
+        const dataEmit = {
+            from: user.username,
+            to: username,
+            mentions: addedMetionList,
+            postId: postId,
+            commentData: newComment,
+        }
+        socket.emit('notification:comment', dataEmit)
+        if (onUpdateCommentList) {
             onUpdateCommentList(newComment)
         }
     }
@@ -284,7 +290,7 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
                     ref={inputRef}
                     onChange={handleOnChange}
                     className="w-full h-full outline-none"
-                    placeholder="Comment here"
+                    placeholder="Thêm bình luận..."
                     spellCheck="false"
                     // onBlur={(e) => e.target.focus()}
                 />
@@ -316,7 +322,7 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
                                     onClick={() => handleAddMention(user)}
                                 >
                                     <div className="w-6 h-6">
-                                    <AvatarImage filename={user.user_avatar} />
+                                        <AvatarImage filename={user.user_avatar} />
                                     </div>
                                     <span>@{user.user_name}</span>
                                 </li>

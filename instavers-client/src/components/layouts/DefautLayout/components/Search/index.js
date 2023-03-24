@@ -18,8 +18,7 @@ function Search() {
 
     useEffect(() => {
         const id = setTimeout(() => {
-            if(!search)
-                setShow(false)
+            if (!search) setShow(false)
             if (search)
                 (async () => {
                     try {
@@ -40,7 +39,7 @@ function Search() {
         setSearch('')
         setShow(false)
     }
-    const handleGotoProfile = (username)=>{
+    const handleGotoProfile = (username) => {
         clearSearch()
         navigate(`/profile/${username}`)
     }
@@ -60,25 +59,25 @@ function Search() {
             />
             <div className="hidden  peer-placeholder-shown:flex absolute  items-center inset-0 px-4 py-1 bg-transparent pointer-events-none text-gray-400">
                 <FontAwesomeIcon icon={faSearch} />
-                <span className="pl-2">Search</span>
+                <span className="pl-2">Tìm kiếm</span>
             </div>
             <div className="flex  peer-placeholder-shown:hidden absolute  items-center right-0 top-1/2 -translate-y-1/2 px-4 py-1 bg-transparent text-gray-400">
-                <FontAwesomeIcon icon={faTimes} onClick={clearSearch} className="cursor-pointer"/>
+                <FontAwesomeIcon icon={faTimes} onClick={clearSearch} className="cursor-pointer" />
             </div>
             {userList.length !== 0 && show && (
                 <div className="peer-focus:block absolute  h-60 bg-white top-full left-0 right-0 -mx-14 shadow-2xl rounded-lg mt-4">
                     <ul className="p-3 cursor-pointer">
-                        {userList.slice(0,5).map((user) => (
-                            <li key={user.user_id} className="flex items-center border-b py-1"
-                                onClick={()=>handleGotoProfile(user.user_name)}
+                        {userList.slice(0, 5).map((user) => (
+                            <li
+                                key={user.user_id}
+                                className="flex items-center border-b py-1"
+                                onClick={() => handleGotoProfile(user.user_name)}
                             >
                                 <div className="mt-1.5 w-10 h-10">
-                                <AvatarImage filename={user.user_avatar} />
+                                    <AvatarImage filename={user.user_avatar} />
                                 </div>
                                 <div className="flex flex-col w-3/5 ml-2 peer">
-                                    <span
-                                        className="useName text-base  cursor-pointer "
-                                    >
+                                    <span className="useName text-base  cursor-pointer ">
                                         @{user.user_name}
                                     </span>
                                 </div>

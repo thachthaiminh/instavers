@@ -1,4 +1,4 @@
-import { faBell, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cls from 'classnames'
 import { useEffect, useState } from 'react'
@@ -101,7 +101,7 @@ function Notification() {
     return (
         <div className="relative">
             <span className="cursor-pointer peer">
-                <FontAwesomeIcon icon={faBell} onClick={handleOpen} className="notification" />
+                <FontAwesomeIcon icon={faHeart} onClick={handleOpen} className="notification" />
             </span>
 
             <div className="fixed bottom-0 right-0 z-50 mb-2 mr-5 text-xl text-blue-800">

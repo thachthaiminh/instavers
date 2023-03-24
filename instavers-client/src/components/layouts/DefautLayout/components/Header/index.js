@@ -1,4 +1,4 @@
-import { faCirclePlus, faComment, faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faHomeAlt, faPaperPlane, faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cls from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
@@ -60,7 +60,7 @@ function Header() {
                                 }}
                                 to={'/'}
                             >
-                                <FontAwesomeIcon icon={faHouse} />
+                                <FontAwesomeIcon icon={faHomeAlt} />
                             </NavLink>
                         </li>
                         <li onClick={useLocation()}>
@@ -81,13 +81,13 @@ function Header() {
                                         style={{ fontSize: '25px', color: 'black' }}
                                     ></i>
                                 )}
-                                <FontAwesomeIcon icon={faComment} />
+                                <FontAwesomeIcon icon={faPaperPlane} />
                             </NavLink>
                         </li>
 
                         <li onClick={openCreate}>
                             <a href="/#" className={cls({ 'text-blue-400': create })}>
-                                <FontAwesomeIcon icon={faCirclePlus} />
+                                <FontAwesomeIcon icon={faSquarePlus} />
                             </a>
                         </li>
                         <li>
