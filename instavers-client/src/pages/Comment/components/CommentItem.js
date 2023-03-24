@@ -45,12 +45,12 @@ function CommentItem({ comment, onReply, gotoId }) {
     }
 
     return (
-        <div ref={replyBox} className="w-full flex gap-1 my-3">
-            <div className="w-2/12 md:w-1/12 shrink-0 flex justify-center">
-                <div className="rounded-full w-9 h-9 overflow-hidden">
+        <div ref={replyBox} className="flex w-full gap-1 my-3">
+            <div className="flex justify-center w-2/12 md:w-1/12 shrink-0">
+                <div className="overflow-hidden rounded-full w-9 h-9">
                     <AvatarImage filename={comment.user_avatar} />
                     {/* <img
-                        className="h-full w-full object-cover"
+                        className="object-cover w-full h-full"
                         src={`${HOST}/static/avatar/${comment.user_avatar}`}
                         alt="avt"
                     /> */}
@@ -58,7 +58,7 @@ function CommentItem({ comment, onReply, gotoId }) {
             </div>
             <div className="w-10/12 grow">
                 <div className="max-w-full">
-                    <span className="font-bold pr-1">@{comment.user_name}</span>
+                    <span className="pr-1 font-bold">@{comment.user_name}</span>
                     <span
                         className="break-words"
                         onClick={handleClickMention}
@@ -68,7 +68,7 @@ function CommentItem({ comment, onReply, gotoId }) {
                 <div className="mt-2 font-medium text-gray-400">
                     <span className="pr-3">{comment.time_distance}</span>
                     <span className="cursor-pointer" onClick={() => onReply(comment)}>
-                        Reply
+                        Phản hồi
                     </span>
                 </div>
                 {comment.replies.length !== 0 && (
