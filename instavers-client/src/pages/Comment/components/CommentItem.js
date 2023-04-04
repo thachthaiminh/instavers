@@ -79,7 +79,7 @@ function CommentItem({ comment, onReply, gotoId }) {
                                     className="font-medium text-gray-400 cursor-pointer"
                                     onClick={() => setOpenReply(true)}
                                 >
-                                    ___ View replies
+                                    Xem bình luận
                                 </span>
                             )}
                             {openReply && (
@@ -87,7 +87,7 @@ function CommentItem({ comment, onReply, gotoId }) {
                                     className="font-medium text-gray-400 cursor-pointer"
                                     onClick={() => setOpenReply(false)}
                                 >
-                                    ___ Close replies
+                                    Ẩn bình luận
                                 </span>
                             )}
                         </div>
