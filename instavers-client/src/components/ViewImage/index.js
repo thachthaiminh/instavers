@@ -24,21 +24,12 @@ function ViewImage({ imageList, aspect, close }) {
                     })}
                 >
                     {imageList.map((image, index) => (
-                        <FirebaseImage key={image.image_id} filename={image.image_url} current={current} index={index}/>
-                        // <img
-                        //     key={index}
-                        //     className={cls(
-                        //         'w-full visible opacity-100 transition ease-in duration-300',
-                        //         {
-                        //             invisible: index !== current,
-                        //             'h-0': index !== current,
-                        //             'opacity-50': index !== current,
-                        //         }
-                        //     )}
-                        //     src={`${HOST}${image.image_url}`}
-                        //     alt=""
-                        //     draggable={false}
-                        // />
+                        <FirebaseImage
+                            key={image.image_id}
+                            filename={image.image_url}
+                            current={current}
+                            index={index}
+                        />
                     ))}
 
                     <div
