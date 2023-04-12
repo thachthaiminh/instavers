@@ -11,6 +11,10 @@ async function get(req, res, next) {
     next(err);
   }
 }
+
+// Hàm get: lấy tất cả các bài đăng của người dùng, 
+// yêu cầu đăng nhập và sử dụng userId để xác định người dùng.
+
 async function getFriend(req, res, next) {
   try {
     const userId = req.userId
@@ -20,6 +24,9 @@ async function getFriend(req, res, next) {
     next(err);
   }
 }
+
+// Hàm getFriend: lấy tất cả các bài đăng của bạn bè của người dùng.
+
 async function getById(req, res, next) {
   try {
     const userId = req.userId
@@ -31,6 +38,8 @@ async function getById(req, res, next) {
   }
 }
 
+// Hàm getById: lấy bài đăng theo postId được xác định và userId để xác định người dùng.
+
 async function create(req, res, next) {
   try {
     req.userId = req.userId
@@ -39,26 +48,7 @@ async function create(req, res, next) {
     const aspect = helpers.getAspect(req.body.aspect);
 
     console.log("Caption data:", captionData);
-
-    // const imageUrlList = []
-
     console.log("IMAGES URL:", images);
-
-    // for (let img of images) {
-    //   const date = new Date();
-    //   const dir = `src/public/${date.getDate()}-${
-    //     date.getMonth() + 1
-    //   }-${date.getFullYear()}`;
-
-    //   if (!fs.existsSync(dir)) {
-    //     fs.mkdirSync(dir, { recursive: true });
-    //   }
-    //   const path = dir + "/" + Date.now() + ".png";
-    //   const base64Data = img.replace(/^data:([A-Za-z-+/]+);base64,/, "");
-
-    //   fs.writeFileSync(path, base64Data, { encoding: "base64" });
-    //   imageUrlList.push(path)`
-    // }
     await postServices.create(req.userId,images, captionData, aspect)
     res.json({ data: { message: "Create the post successfully!" } });
   } catch (err) {
@@ -66,6 +56,9 @@ async function create(req, res, next) {
     next(err);
   }
 }
+
+// Hàm create: tạo một bài đăng mới. Hàm này yêu cầu images (hình ảnh), 
+// captionData (nội dung bài đăng), và aspect để tạo bài đăng mới.
 
 async function remove(req, res, next) {
   try {
@@ -77,6 +70,10 @@ async function remove(req, res, next) {
     next(err);
   }
 }
+
+
+// Hàm remove: xóa một bài đăng đã đăng bởi người dùng.
+
 async function getLikedPosts(req, res, next) {
   try {
     const userId = req.userId
@@ -86,6 +83,9 @@ async function getLikedPosts(req, res, next) {
     next(err);
   }
 }
+
+// Hàm getLikedPosts: lấy tất cả các bài đăng mà người dùng đã thích.
+
 async function getMentionedPosts(req, res, next) {
   try {
     const userId = req.userId
@@ -95,6 +95,8 @@ async function getMentionedPosts(req, res, next) {
     next(err);
   }
 }
+
+// Hàm getMentionedPosts: lấy tất cả các bài đăng mà người dùng đã được đề cập đến.
 
 module.exports = {
   get,

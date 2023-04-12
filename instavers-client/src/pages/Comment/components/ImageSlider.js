@@ -15,20 +15,6 @@ function ImageSlider({ imageList }) {
                 <div className="relative">
                     {imageList.map((image, index) => (
                         <FirebaseImage key={image.image_id} filename={image.image_url} current={current} index={index}/>
-
-                        // <img
-                        // key={image.image_id}
-                        //     className={cls(
-                        //         'w-full h-full visible opacity-100 transition ease-in duration-300 cursor-zoom-in',
-                        //         {
-                        //             invisible: index !== current,
-                        //             'h-0': index !== current,
-                        //             'opacity-50': index !== current,
-                        //         }
-                        //     )}
-                        //     src={`${HOST}${image.image_url}`}
-                        //     alt="imge of new"
-                        // />
                     ))}
                     <div className="flex gap-2 justify-center items-center absolute bottom-3 left-1/2 -translate-x-1/2">
                         {imageList.map((image, index) => (

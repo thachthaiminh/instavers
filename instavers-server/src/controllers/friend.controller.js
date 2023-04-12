@@ -10,6 +10,9 @@ async function getFriends(req, res, next) {
         next(err)
     }
 }
+
+// Hàm getFriends: Lấy danh sách bạn bè của một người dùng.
+
 async function getNewRequestStatus(req, res, next) {
     try {
         const userId = req.userId
@@ -19,6 +22,9 @@ async function getNewRequestStatus(req, res, next) {
         next(err)
     }
 }
+
+// Hàm getNewRequestStatus: Lấy trạng thái yêu cầu kết bạn mới của người dùng.
+
 async function updateNewRequestStatus(req, res, next) {
     try {
         const userId = req.userId
@@ -28,6 +34,9 @@ async function updateNewRequestStatus(req, res, next) {
         next(err)
     }
 }
+
+// Hàm updateNewRequestStatus: Cập nhật trạng thái yêu cầu kết bạn mới của người dùng.
+
 async function sugguestFriends(req, res, next) {
     try {
         const userId = req.userId
@@ -37,6 +46,9 @@ async function sugguestFriends(req, res, next) {
         next(err)
     }
 }
+
+// Hàm sugguestFriends: Đề xuất danh sách bạn bè cho người dùng.
+
 async function getMentions(req, res, next) {
     try {
         const userId = req.userId
@@ -47,6 +59,9 @@ async function getMentions(req, res, next) {
         next(err)
     }
 }
+
+// Hàm getMentions: Lấy danh sách người dùng được đề cập trong tìm kiếm.
+
 async function removeFriend(req, res, next) {
     try {
         const userId = req.userId
@@ -57,6 +72,9 @@ async function removeFriend(req, res, next) {
         next(err)
     }
 }
+
+// Hàm removeFriend: Xóa một người bạn khỏi danh sách bạn bè của người dùng.
+
 async function makeFriend(req, res, next) {
     try {
         res.json({ data: `Make friend with ${req.body.username}` })
@@ -65,6 +83,9 @@ async function makeFriend(req, res, next) {
         next(err)
     }
 }
+
+// Hàm makeFriend: Kết bạn với một người dùng khác.
+
 async function unFriend(req, res, next) {
     try {
         res.json({ data: `Unfriend with ${req.body.username}` })
@@ -73,6 +94,9 @@ async function unFriend(req, res, next) {
         next(err)
     }
 }
+
+// Hàm unFriend: Huỷ kết bạn với một người dùng khác.
+
 async function sendRequestMakeFriend(req, res, next) {
     try {
         const userId = req.userId
@@ -83,6 +107,9 @@ async function sendRequestMakeFriend(req, res, next) {
         next(err)
     }
 }
+
+// Hàm sendRequestMakeFriend: Gửi yêu cầu kết bạn tới một người dùng khác.
+
 async function removeRequestMakeFriend(req, res, next) {
     try {
         const userId = req.userId
@@ -94,6 +121,9 @@ async function removeRequestMakeFriend(req, res, next) {
         next(err)
     }
 }
+
+// Hàm removeRequestMakeFriend: Xóa yêu cầu kết bạn đã gửi đến một người dùng khác.
+
 async function getAllRequestMakeFriend(req, res, next) {
     try {
         const userId = req.userId
@@ -103,6 +133,9 @@ async function getAllRequestMakeFriend(req, res, next) {
         next(err)
     }
 }
+
+// Hàm getAllRequestMakeFriend: Lấy danh sách yêu cầu kết bạn đã gửi và nhận của người dùng.
+
 async function refuseRequestMakeFriend(req, res, next) {
     try {
         const userId = req.userId
@@ -114,6 +147,9 @@ async function refuseRequestMakeFriend(req, res, next) {
         next(err)
     }
 }
+
+// Hàm refuseRequestMakeFriend: Từ chối yêu cầu kết bạn từ một người dùng khác.
+
 async function acceptRequestMakeFriend(req, res, next) {
     try {
         const userId = req.userId
@@ -125,6 +161,8 @@ async function acceptRequestMakeFriend(req, res, next) {
         next(err)
     }
 }
+
+// Hàm acceptRequestMakeFriend: Chấp nhận yêu cầu kết bạn từ một người dùng khác.
 
 module.exports = {
     getFriends,

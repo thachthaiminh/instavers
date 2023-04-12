@@ -34,19 +34,19 @@ async function getUser(userId, username) {
         return {data: {...userInfo, friendship: SELF}}
     }
 
-    // Get friend info between userId with username
+    // Lấy thông tin bạn bè
     const friends = await db.query(`select * from friend where user_id_1 = ? and user_id_2 = ?`, [userId, userInfo.user_id])
     if(friends.length!==0){
         return{data: {...userInfo, friendship: FRIEND}}
     }
 
-    // Get status request make friend
+    // Lấy yc kết bạn
     const requestFriends = await db.query(`select * from friend_invitation where user_id = ? and user_invite = ?`, [userId, userInfo.user_id])
     if(requestFriends.length!==0){
         return{data: {...userInfo, friendship: INVITATION}}
     }
 
-    // Get status request make friend
+    // Lấy yc kết bạn
     const requestMe = await db.query(`select * from friend_invitation where user_id = ? and user_invite = ?`, [userInfo.user_id, userId])
     if(requestMe.length!==0){
         return{data: {...userInfo, friendship: INVITE_ME}}
@@ -54,6 +54,8 @@ async function getUser(userId, username) {
 
     return{data: {...userInfo, friendship: NO_FRIEND}} 
 }
+
+// Lấy thông tin chi tiết của một người dùng dựa trên userId hoặc username
 
 async function searchUsers(userId, username) {
     const rows = await db.query(`select * from users where user_name Like '%${username}%' and user_complete_info= 1`, )
@@ -69,6 +71,8 @@ async function searchExistUsers(username) {
 
     return data[0]
 }
+
+// kiểm tra xem tên người dùng đã tồn tại trong cơ sở dữ liệu chưa.
 
 
 async function login(user) {
@@ -103,6 +107,8 @@ async function login(user) {
     })
 }
 
+// kiểm tra thông tin đăng nhập (tên đăng nhập và mật khẩu) có khớp với cơ sở dữ liệu hay không
+
 async function singup(user) {
     const { username, password, email } = user
 
@@ -125,6 +131,8 @@ async function update(userId, data) {
 
     return { message: 'Update successfully', user: data }
 }
+
+// đăng ký người dùng mới
 
 module.exports = {
     getUser,

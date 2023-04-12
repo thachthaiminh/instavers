@@ -19,7 +19,6 @@ axiosClient.interceptors.request.use(
         return config
     },
     function (error) {
-        // Do something with request error
         return Promise.reject(error)
     }
 )
@@ -28,9 +27,6 @@ axiosClient.interceptors.response.use(
         return response.data
     },
     function (error) {
-        // let res = error.response;
-        //   console.log(error);
-        //   console.error('Looks like there was a problem. Status Code: ' + res.status);
         return Promise.reject(error)
     }
 )

@@ -11,6 +11,11 @@ async function add(req, res, next) {
     next(err);
   }
 }
+
+// "add" sẽ được gọi khi có request để thêm một bình luận mới vào một bài đăng. 
+// Nó sẽ lấy thông tin người dùng từ req.userId và các thông tin cần thiết để thêm bình luận từ req.body, 
+// sau đó gọi tới service để thêm bình luận và trả về kết quả thông qua res.json.
+
 async function get(req, res, next) {
   try {
     const {postId} = req.params
@@ -20,6 +25,10 @@ async function get(req, res, next) {
     next(err);
   }
 }
+
+// "get" sẽ được gọi khi có request để lấy danh sách các bình luận của một bài đăng. 
+// Nó sẽ lấy thông tin postId từ req.params 
+// và gọi tới service để lấy danh sách bình luận và trả về kết quả thông qua res.json.
 
 
 module.exports = {

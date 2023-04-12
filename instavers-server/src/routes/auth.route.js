@@ -36,13 +36,8 @@ router.post(
     [
         body('username').isString().bail().notEmpty().withMessage('Username is not empty'),
         body('password').isString().bail().notEmpty().withMessage('Password is not empty'),
-        // body("fullname").isString().bail().notEmpty().withMessage("Fullname is not empty"),
         body('email', 'Email is not empty').normalizeEmail().isEmail().bail().notEmpty(),
-        // body("gender").isInt().bail().notEmpty().withMessage('Gender is not empty'),
-        // body("birthday").isISO8601().toDate(),
-        // body("phone").isMobilePhone().bail().notEmpty().withMessage('Phone is not empty')
     ],
-    // authMiddleware.checkExistUsername,
     authController.signup
 )
 router.post(
@@ -57,10 +52,8 @@ router.post('/test', body('weekday').not().isIn(['sun', 'sat']), (req, res) => {
     try {
         console.log(validationResult(req))
         validationResult(req).throw()
-        // yay! we're good to start selling our skilled services :)))
         res.json('ok')
     } catch (err) {
-        // Oh noes. This user doesn't have enough skills for this...
         res.status(400).json('fail')
     }
 })

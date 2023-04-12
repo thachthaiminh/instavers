@@ -5,7 +5,8 @@ import { getImageUrl } from '../../storage'
 export default function FirebaseImage({ filename, index, current, openView }) {
     const imgRef = useRef(null)
     const [loading, setLoading] = useState(true)
-
+    
+//tải hình ảnh từ Firebase Storage bằng cách truyền vào tên file của hình ảnh
     const loadImage = async (filename) => {
         console.log('Loading')
         try {

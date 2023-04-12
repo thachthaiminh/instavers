@@ -19,7 +19,6 @@ function setupRouter(app) {
   });
   app.use("/api/posts", authMiddleware.verifyToken, postRouter);
   app.use("/api/auths", authRouter);
-  app.use("/api/messages", messageRouter);
   app.use("/api/friends", authMiddleware.verifyToken, friendRouter);
   app.use("/api/hashtags", authMiddleware.verifyToken, hashtagRouter);
   app.use("/api/notifications", authMiddleware.verifyToken, notificationRouter);

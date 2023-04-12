@@ -25,15 +25,8 @@ async function getAllPosts(userId) {
         post.likeData = likeData
 
         post.images = images.data
-        // post.images = images.data
         const date = new Date(post.created_at)
         post.time_distance = helper.getDistanceTime(date)
-
-        //additional information
-        // {
-        //   total_post,
-        //   recent_images,
-        // }
     }
 
     return {
@@ -67,15 +60,7 @@ async function getFriendPosts(userId) {
         post.likeData = likeData
 
         post.images = images.data
-        // post.images = images.data
         const date = new Date(post.created_at)
-        post.time_distance = helper.getDistanceTime(date)
-
-        //additional information
-        // {
-        //   total_post,
-        //   recent_images,
-        // }
     }
 
     return {
@@ -107,13 +92,6 @@ async function getById(userId, postId) {
     post.images = images.data
     const date = new Date(post.created_at)
     post.time_distance = helper.getDistanceTime(date)
-
-    //additional information
-    // {
-    //   total_post,
-    //   recent_images,
-    // }
-
     return {
         data: post,
     }
@@ -187,19 +165,10 @@ async function create(userId, imageUrlList, captionData, aspect) {
     const postId = rows.insertId
 
     console.log('Image List', imageUrlList)
-    // Add Image to this post
     for (let imageUrl of imageUrlList) {
         await imagesService.addImages(postId, imageUrl)
     }
-
-    //Add first comment
     if (captionData.content) await commentService.add(userId, postId, captionData)
-
-    // //Add mention
-    // if(getMentions.lengths!==0){
-    //     await db.query(`INSERT INTO post (user_id, post_status,aspect) VALUES (?, '1', ?)`, [userId,aspect])
-    // }
-
     return {
         message: 'Create a post',
     }
@@ -223,7 +192,6 @@ async function deleteAllSaved(postId) {
 async function remove(userId, postId) {
     await imagesService.deleteAll(postId)
     await reactionService.deleteAll(postId)
-    // await deleteAllSaved(postId)
     await commentService.deleteAll(postId)
     await db.query(`DELETE FROM post where post.post_id = ?`, [postId])
 

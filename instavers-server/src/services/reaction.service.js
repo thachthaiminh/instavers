@@ -1,6 +1,7 @@
 const db = require('./db.service');
 const helper = require('../utils/helper.util');
 
+//Trả về số lượng lượt thích và thông tin về việc người dùng có thích bài viết này hay không.
 async function getLikes(postId, userId){
 
   const rows = await db.query(
@@ -23,6 +24,8 @@ async function getLikes(postId, userId){
     hasLike: hasLike.length !==0
   }
 }
+
+//Thêm một lượt thích mới cho bài viết.
 async function like(userId,postId){
 
   await db.query(
@@ -34,6 +37,8 @@ async function like(userId,postId){
     message: "Like successfully!"
   }
 }
+
+//Xóa một lượt thích đã có trên bài viết.
 async function unlike(userId,postId){
 
   await db.query(
@@ -46,6 +51,7 @@ async function unlike(userId,postId){
   }
 }
 
+//Xóa tất cả lượt thích trên bài viết.
 async function deleteAll(postId){
 
   await db.query(

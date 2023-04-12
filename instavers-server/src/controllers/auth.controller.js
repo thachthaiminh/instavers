@@ -12,6 +12,9 @@ async function getUser(req, res, next) {
         next(err)
     }
 }
+
+//Hàm getUser: Hàm này được sử dụng để lấy thông tin của một người dùng dựa trên username được truyền vào.
+
 async function searchUsers(req, res, next) {
     try {
         console.log(req.params)
@@ -23,6 +26,9 @@ async function searchUsers(req, res, next) {
         next(err)
     }
 }
+
+//Hàm searchUsers: Hàm này được sử dụng để tìm kiếm người dùng dựa trên username được truyền vào.
+
 async function login(req, res, next) {
     try {
         const errors = validationResult(req)
@@ -36,6 +42,11 @@ async function login(req, res, next) {
         next(err)
     }
 }
+
+//Hàm login: Hàm này được sử dụng để xử lý request đăng nhập. 
+//Hàm này sử dụng hàm validationResult từ thư viện express-validator 
+//để kiểm tra tính hợp lệ của các trường dữ liệu được gửi đến từ phía người dùng.
+
 async function signup(req, res, next) {
     try {
         const errors = validationResult(req)
@@ -44,13 +55,15 @@ async function signup(req, res, next) {
         }
 
         res.json(await authServices.singup(req.body))
-        // console.log(req.body);
-        // res.json(await authServices.login(req.body));
     } catch (err) {
         console.error(`Error while login`, err.message)
         next(err)
     }
 }
+
+// Hàm signup: Hàm này được sử dụng để xử lý request đăng ký. Hàm này cũng sử dụng hàm 
+// validationResult để kiểm tra tính hợp lệ của các trường dữ liệu được gửi đến từ phía người dùng.
+
 async function update(req, res, next) {
     try {
         const data = req.body
@@ -65,6 +78,8 @@ async function update(req, res, next) {
         next(err)
     }
 }
+
+// Hàm update: Hàm này được sử dụng để cập nhật thông tin người dùng.
 
 module.exports = {
     getUser,

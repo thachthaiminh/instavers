@@ -11,6 +11,10 @@ async function like(req, res, next) {
     next(err);
   }
 }
+
+// Hàm like xử lý yêu thích bài đăng của người dùng, nó lấy ra userId và postId từ request parameter 
+// và sử dụng reactionServices.like để thực hiện phản ứng yêu thích và trả về kết quả.
+
 async function unlike(req, res, next) {
   try {
     const userId = req.userId
@@ -21,6 +25,9 @@ async function unlike(req, res, next) {
     next(err);
   }
 }
+
+// Hàm unlike xử lý hủy thích bài đăng của người dùng, nó lấy ra userId và postId từ request parameter 
+// và sử dụng reactionServices.unlike để thực hiện phản ứng hủy thích và trả về kết quả.
 
 module.exports = {
     like,

@@ -271,13 +271,13 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
 
     return (
         <>
-            <div className="text-2xl relative">
-                <FontAwesomeIcon className="peer cursor-pointer" icon={faSmile} />
-                <div className="peer-hover:block bg-white -mb-2 text-center  hidden hover:block  absolute w-32 bottom-full border border-gray-200 p-1 text-lg">
+            <div className="relative text-2xl">
+                <FontAwesomeIcon className="cursor-pointer peer" icon={faSmile} />
+                <div className="absolute hidden w-32 p-1 -mb-2 text-lg text-center bg-white border border-gray-200 peer-hover:block hover:block bottom-full">
                     {icons.map((icon) => (
                         <span
                             key={icon}
-                            className="cursor-pointer p-1"
+                            className="p-1 cursor-pointer"
                             onClick={() => typeInTextarea(icon)}
                         >
                             {icon}
@@ -285,7 +285,7 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
                     ))}
                 </div>
             </div>
-            <div className="grow  mx-4 relative">
+            <div className="relative mx-4 grow">
                 <input
                     ref={inputRef}
                     onChange={handleOnChange}
@@ -307,7 +307,7 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
                     {error && <span>Bài đăng không tồn tại</span>}
                     {loading && (
                         <div className="py-1">
-                            <span className="block w-4 h-4 border border-white border-l-transparent animate-spin rounded-full"></span>
+                            <span className="block w-4 h-4 border border-white rounded-full border-l-transparent animate-spin"></span>
                         </div>
                     )}
                 </div>
@@ -318,7 +318,7 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
                             {mentionList.map((user) => (
                                 <li
                                     key={user.user_id}
-                                    className="flex p-1 gap-1 cursor-pointer"
+                                    className="flex gap-1 p-1 cursor-pointer"
                                     onClick={() => handleAddMention(user)}
                                 >
                                     <div className="w-6 h-6">
@@ -336,7 +336,7 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
                             {hashtagList.map((tag) => (
                                 <li
                                     key={tag.hashtag_id}
-                                    className="flex p-1 gap-1 cursor-pointer"
+                                    className="flex gap-1 p-1 cursor-pointer"
                                     onClick={() => handleAddHashtag(tag)}
                                 >
                                     <span>#{tag.hashtag_name}</span>

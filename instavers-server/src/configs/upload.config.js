@@ -4,11 +4,10 @@ const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'src/public/')
     },
-    // filename: function (req, file, cb) {
-    //   const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    //   cb(null, file.fieldname + '-' + uniqueSuffix + '.png')
-    // }
   })
+
+  // sử dụng phương thức diskStorage của Multer để lưu trữ file được tải lên vào thư mục "src/public/".
   
   const upload = multer({ storage: storage })
   module.exports = upload
+

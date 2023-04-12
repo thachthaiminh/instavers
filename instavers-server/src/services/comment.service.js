@@ -4,7 +4,7 @@ const config = require('../configs/db.config')
 const friendService = require('./friend.service')
 const hashtagService = require('./hashtag.service')
 
-//Get all comments by postId
+// Hàm "getComments": lấy tất cả các bình luận trên một bài đăng dựa trên ID của bài đăng.
 async function getComments(postId) {
     if (!postId) return []
     const rows = await db.query(
@@ -33,6 +33,8 @@ async function getComments(postId) {
         data,
     }
 }
+
+// Hàm "getFristComment": lấy bình luận đầu tiên trên một bài đăng dựa trên ID của bài đăng.
 async function getFristComment(postId) {
     if (!postId) return []
     const rows = await db.query(
@@ -43,6 +45,8 @@ async function getFristComment(postId) {
 
     return data[0]
 }
+
+// Hàm "getCommentCount": lấy số lượng bình luận trên một bài đăng dựa trên ID của bài đăng.
 async function getCommentCount(postId) {
     if (!postId) return []
 
@@ -53,6 +57,8 @@ async function getCommentCount(postId) {
     const commentCount = data[0].count
     return commentCount
 }
+
+// Hàm "add": thêm một bình luận mới cho một bài đăng
 async function add(userId, postId, captionData, replyId) {
     const { content, mentions, hashtags } = captionData
 
@@ -76,6 +82,7 @@ async function add(userId, postId, captionData, replyId) {
     return { message: 'Add comment successfully!', comment_id: commentId }
 }
 
+// Hàm "deleteById": xóa một bình luận dựa trên ID của bình luận
 async function deleteById(commentId) {
     console.log('deleteById Comment', commentId)
     const replyList = await db.query(
@@ -96,6 +103,8 @@ async function deleteById(commentId) {
 
     return { message: 'Delete the comment successfully' }
 }
+
+// Hàm "deleteAll": xóa tất cả các bình luận trên một bài đăng dựa trên ID của bài đăng.
 async function deleteAll(postId) {
     const rows = await db.query(
         `select comment.comment_id from comment where comment.reply_comment_id is null and comment.post_id = ?`,

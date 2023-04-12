@@ -22,6 +22,7 @@ module.exports = (io, socket, onlineList) => {
         })
         console.log('LIKE:', payload)
     }
+
     const createNotification = (payload) => {
         socket.broadcast.emit('notification:broadcast:create', {
             from: payload.from,

@@ -17,7 +17,7 @@ function AvatarImage({ filename, imageRef }) {
             console.log(error)
         }
     }
-
+//tải hình ảnh khi filename thay đổi
     useEffect(() => {
         if (filename) {
             loadImage(filename)

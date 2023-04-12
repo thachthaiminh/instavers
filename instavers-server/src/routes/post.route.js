@@ -4,14 +4,13 @@ const router = express.Router();
 const postController = require("../controllers/post.controller");
 
 router.get("/", postController.get);
-router.get("/friend", postController.getFriend);
-router.post("/", postController.create);
-router.get("/liked", postController.getLikedPosts);
-router.get("/mentioned", postController.getMentionedPosts);
-router.get("/:postId", postController.getById);
+router.get("/friend", postController.getFriend); //lấy bài đăng của bạn bè.
+router.post("/", postController.create); //tạo bài đăng mới.
+router.get("/liked", postController.getLikedPosts); //lấy tất cả bài đăng đã được thích.
+router.get("/mentioned", postController.getMentionedPosts); //lấy tất cả bài đăng đã được đề cập đến.
+router.get("/:postId", postController.getById); 
 router.delete("/:postId", postController.remove);
 
-//tạo message
 router.post("/msg", async (req, res) => {
   try {
     const { from, to, message } = req.body;
@@ -25,6 +24,8 @@ router.post("/msg", async (req, res) => {
     return res.status(500).json("Internal Server Error");
   }
 });
+
+//gửi bl giữa hai người dùng.
 
 router.get("/get/chat/msg/:user1Id/:user2Id", async (req, res) => {
   try {
@@ -48,5 +49,7 @@ router.get("/get/chat/msg/:user1Id/:user2Id", async (req, res) => {
     return res.status(500).json("Internal server error");
   }
 });
+
+//lấy tất cả tin nhắn giữa hai người dùng
 
 module.exports = router;

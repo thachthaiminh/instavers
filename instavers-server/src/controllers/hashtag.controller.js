@@ -10,6 +10,10 @@ async function search(req, res, next) {
   }
 }
 
+// Đoạn code này xử lý việc tìm kiếm hashtag trong hệ thống.
+// Hàm search này lấy thông tin từ parameter search của request và sử dụng hashtagService.search 
+// để tìm kiếm các hashtag có chứa từ khóa tương ứng. Sau đó, trả về kết quả thông qua response.
+
 
 module.exports = {
   search,

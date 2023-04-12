@@ -3,6 +3,8 @@ const helper = require('../utils/helper.util')
 
 const MENTION = 0
 const LIKE = 1
+
+//Lấy tất cả các thông báo được gửi đến người dùng
 async function getAll(userId) {
     const mentionRows = await db.query(
         `SELECT comment.comment_id,users.user_avatar, comment.post_id,users.user_name, mentions.is_seen,comment.created_at FROM mentions, comment, users WHERE users.user_id = comment.user_id and comment.comment_id = mentions.comment_id and mention_user_id = ?`,
@@ -35,6 +37,7 @@ async function getAll(userId) {
     }
 }
 
+//Cập nhật trạng thái của thông báo, khi người dùng xem thông báo, đánh dấu nó là đã xem
 async function updateNotifyStatus(userId, data) {
     console.log('updateNotifyStatus:', userId, data)
     if (data.type === MENTION) {
