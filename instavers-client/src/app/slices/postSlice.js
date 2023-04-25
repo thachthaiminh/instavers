@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+// Slice được sử dụng để lưu trữ danh sách các bài đăng trong ứng dụng, 
+// bao gồm cả danh sách bài đăng công khai và bài đăng của bạn bè.
+
 const initialState = {
   public: [],
   friend: [],
@@ -18,7 +21,6 @@ export const postSlice= createSlice({
   }
 })
 
-// Action creators are generated for each case reducer function
 export const { updatePublicPostList,updateFriendPostList } = postSlice.actions
 
 export default postSlice.reducer

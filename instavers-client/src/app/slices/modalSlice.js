@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+// Slice được sử dụng để lưu trữ trạng thái của các modal được sử dụng trong ứng dụng.
+
 const initialState = {
   create: false,
   comment: false,
@@ -28,7 +30,6 @@ export const modalSlice = createSlice({
   }
 })
 
-// Action creators are generated for each case reducer function
 export const { open, close,openComment,closeComment,setReload } = modalSlice.actions
 
 export default modalSlice.reducer

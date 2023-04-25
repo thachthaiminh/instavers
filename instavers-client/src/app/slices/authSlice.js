@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+//  Slice này sử dụng để lưu trữ thông tin về người dùng đăng nhập và trạng thái đăng nhập
+
 const data = JSON.parse(localStorage.getItem('user')) 
 const initialState = {
   user: data?.user||null,
@@ -32,7 +34,7 @@ export const modalSlice = createSlice({
   }
 })
 
-// Action creators are generated for each case reducer function
+
 export const { signup, logout,login,update } = modalSlice.actions
 
 export default modalSlice.reducer

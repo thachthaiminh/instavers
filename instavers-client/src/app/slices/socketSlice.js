@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 const initialState = { current: null }
 
+// sử dụng để lưu trữ trạng thái hiện tại của kết nối Socket.IO.
+
 export const socketSlice = createSlice({
     name: 'socket',
     initialState,
@@ -14,7 +16,6 @@ export const socketSlice = createSlice({
     },
 })
 
-// Action creators are generated for each case reducer function
 export const { setSocket,clearSocket } = socketSlice.actions
 
 export default socketSlice.reducer

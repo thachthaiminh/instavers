@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { getImageUrl } from '../../storage'
 import cls from 'classnames'
 
+// Hiển thị avatar người dùng
 function AvatarImage({ filename, imageRef }) {
     const imgRef = useRef(null)
     const [loading, setLoading] = useState(true)
@@ -37,8 +38,8 @@ function AvatarImage({ filename, imageRef }) {
             />
 
             {loading && (
-                <div className="w-full h-full flex justify-center items-center">
-                    <div className="w-9 h-9 border border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                <div className="flex items-center justify-center w-full h-full">
+                    <div className="border border-blue-500 rounded-full w-9 h-9 border-t-transparent animate-spin"></div>
                 </div>
             )}
         </>

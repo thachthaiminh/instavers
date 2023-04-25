@@ -14,18 +14,22 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
     const user = useSelector((state) => state.auth.user)
     const socket = useSelector((state) => state.socket.current)
 
+//xử lý thẻ @ tag người dùng khác.
     const [getMention, setGetMention] = useState(false)
     const [startPos, setStartPos] = useState(0)
     const [searchMention, setSearchMention] = useState('')
     const [mentionList, setMentionList] = useState([])
-
+    
+//xử lý thẻ # hashtag.
     const [getHashTag, setGetHashTag] = useState(false)
     const [searchHashtag, setSearchHashtag] = useState('')
     const [hashtagList, setHashtagList] = useState([])
 
+//lưu danh sách các thẻ @ và # đã được thêm vào bình luận.
     const [addedMetionList, setAddedMentionList] = useState([])
     const [addedHashtagList, setAddedHashtagList] = useState([])
 
+//hiển thị trạng thái xử lý
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [showSuccess, setShowSuccess] = useState(false)
@@ -38,6 +42,8 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
         el.setRangeText(newText, start, end, 'end')
     }
 
+// lắng nghe sự thay đổi của replyData (nếu có) để đưa ra lựa chọn đề cập đến người dùng khác 
+// khi trả lời bình luận của người khác
     useEffect(() => {
         if (replyData) {
             inputRef.current.value = ''
@@ -52,8 +58,9 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
         }
     }, [replyData])
 
+//được gọi mỗi khi người dùng thay đổi giá trị của input element, 
+// hàm này sẽ xử lý việc đề cập đến người dùng khác và hashtag.
     const handleOnChange = (e, el = document.activeElement) => {
-        // console.log(e.target.value, el.selectionStart, el.selectionEnd)
         const currentPointer = el.selectionStart
         const value = e.target.value
         const lastChar = value[el.selectionStart - 1]
@@ -61,6 +68,7 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
         handleTypingHashTag(value, lastChar, currentPointer)
     }
 
+// xử lý đề cập đến người dùng khác
     const handleTypingMention = (value, lastChar, currentPointer) => {
         if (!getMention) {
             if (
@@ -83,6 +91,7 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
         }
     }
 
+    // lắng nghe sự kiện tìm tag
     useEffect(() => {
         const searchData = searchMention.slice(1)
 
@@ -102,6 +111,8 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
         }
     }, [searchMention, getMention])
 
+
+// thêm đề cập đến người dùng khác
     const handleAddMention = (userInfo) => {
         const user = userInfo.user_name
         typeInTextarea(user.slice(searchMention.length - 1) + ' ')
@@ -115,7 +126,7 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
         })
     }
 
-    // -----------------------
+    // lắng nghe sự kiện tìm hashtag
     useEffect(() => {
         const searchData = searchHashtag.slice(1)
 
@@ -134,6 +145,7 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
         }
     }, [searchHashtag, getHashTag])
 
+    // hàm kiểm tra nếu người dùng đang gõ hashtag và đặt các trạng thái getHashTag, searchHashtag tương ứng.
     const handleTypingHashTag = (value, lastChar, currentPointer) => {
         if (!getHashTag) {
             if (
@@ -155,6 +167,8 @@ function CommentInput({ postId, username, replyData, onUpdateCommentList }) {
             setSearchHashtag(hashtag)
         }
     }
+
+    // hàm thêm một hashtag đã được nhập vào comment box và vào danh sách đã thêm (addedHashtagList).
     const handleAddHashtag = (tag) => {
         const tagname = tag.hashtag_name
         typeInTextarea(tagname.slice(searchHashtag.length - 1) + ' ')
