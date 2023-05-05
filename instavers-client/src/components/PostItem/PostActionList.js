@@ -1,22 +1,22 @@
-import { faCheck, faEllipsis, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsis} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
-import Modal from '../Modal'
-import DeleteModal from './DeleteModal'
+// import { useState } from 'react'
+// import DeleteModal from './DeleteModal'
 
 function PostActionList() {
-    const [open, setOpen] = useState(false)
-    const [openRemove, setOpenRemove] = useState(false)
+    // const [open, setOpen] = useState(false)
+    // const [openRemove, setOpenRemove] = useState(false)
+    // const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
     return (
         <div className="text-2xl  relative">
             <FontAwesomeIcon
                 className="cursor-pointer"
                 icon={faEllipsis}
-                onClick={() => setOpen(true)}
+                // onClick={() => setOpen(true)}
             />
 
-            {open && (
+            {/* {open && (
                 <>
                     <ul className="absolute  top-full right-0 text-base z-20 bg-white px-3 py-2 rounded-lg w-24 border font-medium">
                         <li className="cursor-pointer border-b border-b-gray-300 py-1 hover:bg-gray-200 hover:-mx-3 hover:px-3 transition-all">
@@ -27,6 +27,7 @@ function PostActionList() {
                             onClick={() => {
                                 setOpenRemove(true)
                                 setOpen(false)
+                                setOpenDeleteModal(true)
                             }}
                         >
                             Xóa
@@ -37,9 +38,9 @@ function PostActionList() {
                     </ul>
                     <div className="fixed inset-0 z-10" onClick={() => setOpen(false)}></div>
                 </>
-            )}
+            )} */}
 
-            {openRemove && <DeleteModal onClose={() => setOpenRemove(false)} />}
+            {/* {openRemove && <DeleteModal onClose={() => setOpenRemove(false)} />} */}
         </div>
     )
 }
